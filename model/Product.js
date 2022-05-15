@@ -13,4 +13,5 @@ new Schema({
     image:{type: String, required: true},
 
 
+});
 module.exports = Product;
