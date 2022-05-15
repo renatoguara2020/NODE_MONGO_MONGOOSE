@@ -1,17 +1,7 @@
-const { MongoClient } = require("mongodb");
-// Connection URI
-const uri = "mongodb://localhost:27017/mongo_mongoose";
-// Create a new MongoClient
-const client = new MongoClient(uri);
-async function run() {
-  try {
-    await client.connect();
-    console.log("Conectado ao MongoDB!");
-  } catch (err) {
-    console.log(err);
-  }
-}
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/mongo_mongoose');
 
-run();
+const Cat = mongoose.model('Cat', { name: String });
 
-module.exports = client;
+const kitty = new Cat({ name: 'Zildjian' });
+kitty.save().then(() => console.log('meow'));
